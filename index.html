@@ -1,14 +1,525 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#050a18"><title>VISION AI</title>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030b18">
+<title>VISION AI</title>
+
 <style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;background:#050a18;color:#eaf7ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}body{overflow:hidden;background:radial-gradient(ellipse at 50% 34%,#123361 0,#091a36 38%,#050a18 76%)}body:after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,#087cff33,transparent 48%)}.app{height:100dvh;max-width:900px;margin:auto;padding:env(safe-area-inset-top) 18px env(safe-area-inset-bottom);display:flex;flex-direction:column;position:relative}.top{height:58px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}.brand{font-size:13px;font-weight:800;letter-spacing:.22em}.brand b{color:#54caff}.status{font-size:11px;color:#92abc8}.stage{flex:1;min-height:0;overflow:auto;display:flex;align-items:center;flex-direction:column;padding:8px 0 16px}.orbwrap{width:min(70vw,300px);height:min(70vw,300px);flex-shrink:0;position:relative;display:grid;place-items:center;margin:8px auto 10px;perspective:900px}.halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#1aaaff55,transparent 68%);filter:blur(14px);animation:halo 4s infinite}.orb{width:76%;height:76%;border-radius:50%;position:relative;overflow:hidden;background:radial-gradient(circle at 29% 22%,#f2ffff 0,#8ceaff 3%,#169cff 14%,#0754b8 40%,#071c55 70%,#02091c 100%);box-shadow:inset -22px -25px 42px #000b,inset 12px 10px 22px #c9fbff9c,0 0 28px #159eff,0 0 75px #087aff88;animation:float 6s ease-in-out infinite}.orb:before{content:"";position:absolute;inset:-20%;border-radius:50%;background:conic-gradient(transparent 0 18%,#9af5ffbb 27%,transparent 35% 58%,#198dffbb 68%,transparent 77%);filter:blur(8px);animation:spin 9s linear infinite}.orb:after{content:"";position:absolute;inset:13%;border-radius:50%;border:1px solid #a5efff66;box-shadow:inset 0 0 25px #4bcaff55}.core{position:absolute;inset:28%;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#6ce8ff 18%,#1488ed 50%,#07306e);filter:blur(2px);opacity:.8;box-shadow:0 0 34px #29baff}.ring{position:absolute;width:104%;height:38%;border:1px solid #66cfff55;border-radius:50%;transform:rotateX(72deg)}.ring.two{width:118%;height:45%;transform:rotateX(72deg) rotateZ(48deg);border-color:#358eff55}.orbwrap.listening .orb{animation:pulse .7s infinite alternate}.orbwrap.thinking .orb{animation:think 1.3s infinite}.orbwrap.speaking .orb{animation:pulse .5s infinite alternate}@keyframes float{50%{transform:translateY(-10px) rotateY(9deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes halo{50%{transform:scale(1.15);opacity:.7}}@keyframes pulse{to{transform:scale(1.09);filter:brightness(1.4)}}@keyframes think{50%{transform:rotateY(25deg) scale(.97);filter:hue-rotate(20deg)}}.heading{text-align:center;margin:0 0 15px}.hello{color:#92cafa;font-size:15px;letter-spacing:.08em;margin-bottom:8px}h1{font-size:clamp(28px,7vw,44px);line-height:1.12;letter-spacing:-.04em;margin:0;text-shadow:0 5px 25px #2492ff40}.sub{font-size:13px;color:#83a3c7;margin-top:10px}.chat{width:100%;max-width:720px;display:flex;flex-direction:column;gap:12px;padding:8px 2px 16px}.msg{max-width:88%;padding:13px 16px;border-radius:18px;font-size:14px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.user{align-self:flex-end;background:linear-gradient(135deg,#1269bd,#123a79);border:1px solid #71caff55}.ai{align-self:flex-start;background:#091c37c9;border:1px solid #51a6ff33;backdrop-filter:blur(16px)}.bottom{padding:12px 0 max(18px,env(safe-area-inset-bottom));flex-shrink:0}.composer{display:flex;align-items:center;gap:10px;padding:9px 10px 9px 18px;border-radius:24px;background:linear-gradient(145deg,#153e6bc7,#07162fe8);border:1px solid #5cbbff55;box-shadow:0 12px 36px #0058be38,inset 0 1px #ffffff18;backdrop-filter:blur(22px)}input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:#effaff;font-size:15px;padding:10px 0}input::placeholder{color:#8ba9c9}.round{width:45px;height:45px;border:1px solid #74cdff55;border-radius:50%;display:grid;place-items:center;color:#e0f8ff;background:linear-gradient(145deg,#1b83d9,#0b326c);cursor:pointer;flex-shrink:0;box-shadow:0 4px 16px #007eff44}.round svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.mic.active{background:linear-gradient(145deg,#ed4c83,#852b76)}.hint{text-align:center;color:#6686aa;font-size:10px;margin-top:10px}@media(min-width:700px){.stage{justify-content:center}.orbwrap{margin-top:10px}}
-</style></head><body><div class="app"><header class="top"><div class="brand">VISION <b>AI</b></div><div class="status" id="status">● Ready to help</div></header><main class="stage" id="stage"><div class="orbwrap" id="orbwrap"><div class="halo"></div><div class="ring"></div><div class="ring two"></div><div class="orb"><div class="core"></div></div></div><section class="heading" id="welcome"><div class="hello">Hello, I'm VISION</div><h1>How can I help<br>you today?</h1><div class="sub">Ask anything. Speak naturally.</div></section><section class="chat" id="chat" aria-live="polite"></section></main><footer class="bottom"><form class="composer" id="form"><input id="prompt" placeholder="Ask anything..." autocomplete="off" aria-label="Ask anything"><button class="round mic" id="mic" type="button" aria-label="Speak"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg></button><button class="round" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12 20 4l-5 16-3-7-8-1Z"/><path d="m12 13 8-9"/></svg></button></form><div class="hint">VISION AI · Secure AI connection</div></footer></div>
+:root {
+  --bg: #030b18;
+  --panel: #07182a;
+  --blue: #00aaff;
+  --cyan: #48dcff;
+  --text: #d9f5ff;
+  --muted: #8daabd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at center, #09213b 0%, var(--bg) 75%);
+  color: var(--text);
+  font-family: "Courier New", monospace;
+  padding: 14px;
+}
+
+.app {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid #164363;
+  gap: 10px;
+}
+
+.brand {
+  color: var(--cyan);
+  font-size: 23px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.status {
+  color: #53e6b0;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.dashboard {
+  position: relative;
+  margin-top: 18px;
+  min-height: 690px;
+  border: 1px solid #164b6c;
+  border-radius: 25px;
+  overflow: hidden;
+  background: linear-gradient(180deg,#071a2d,#020916);
+  box-shadow: 0 0 22px #007dba25;
+}
+
+.hologram {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 5px 65px;
+}
+
+.hologram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: pulse 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px #00aaff);
+}
+
+@keyframes pulse {
+  0%,100% {
+    opacity: .78;
+    filter: brightness(.85) drop-shadow(0 0 12px #00aaff);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 25px #00cfff);
+  }
+}
+
+.panel {
+  position: absolute;
+  z-index: 2;
+  background: #041426dd;
+  border: 1px solid #087eae;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 0 12px #008ac544;
+  backdrop-filter: blur(8px);
+}
+
+.left-top {
+  top: 18px;
+  left: 12px;
+  width: 47%;
+}
+
+.right-top {
+  top: 18px;
+  right: 12px;
+  width: 43%;
+  text-align: center;
+}
+
+.label {
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.time {
+  color: #53dfff;
+  font-size: clamp(19px,5vw,29px);
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.date, .day {
+  font-size: 12px;
+  margin-top: 8px;
+  color: var(--text);
+}
+
+.day {
+  color: var(--cyan);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.festival {
+  margin-top: 12px;
+  color: #e8faff;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.festival small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+.assistant {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #164b6c;
+  border-radius: 22px;
+  background: linear-gradient(145deg,#091d30,#030d1b);
+}
+
+.section-label {
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 15px 0 8px;
+}
+
+.tamil {
+  color: var(--muted);
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.response {
+  min-height: 65px;
+  padding: 14px;
+  margin-top: 16px;
+  border: 1px solid #164b6c;
+  border-radius: 12px;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.mic-area {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mic {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  color: white;
+  background: radial-gradient(circle,#0876b8,#03152a 70%);
+  box-shadow: 0 0 20px #00aaff88;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.mic:active {
+  transform: scale(.94);
+}
+
+.mic.listening {
+  animation: pulse 1s infinite;
+  box-shadow: 0 0 30px #00dfff;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+input {
+  min-width: 0;
+  flex: 1;
+  background: #031020;
+  border: 1px solid #164b6c;
+  border-radius: 10px;
+  padding: 13px;
+  color: white;
+  outline: none;
+}
+
+button.send {
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background: #063b61;
+  color: white;
+  padding: 0 17px;
+  cursor: pointer;
+}
+
+@media(max-width:380px) {
+  .panel { padding: 9px; }
+  .label { font-size: 9px; }
+  .date { font-size: 10px; }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<header class="header">
+  <div>
+    <div class="brand">VISION AI</div>
+    <div class="subtitle">PERSONAL INTELLIGENCE SYSTEM</div>
+  </div>
+  <div class="status">● SYSTEM READY</div>
+</header>
+
+<main class="dashboard">
+
+  <div class="hologram">
+    <img src="hologram.png" alt="VISION AI Holographic Assistant">
+  </div>
+
+  <section class="panel left-top">
+    <div class="label">LOCAL TIME</div>
+    <div class="time" id="clock">--:--:--</div>
+    <div class="date" id="date">Loading...</div>
+  </section>
+
+  <section class="panel right-top">
+    <div class="label">TODAY</div>
+    <div class="day" id="day">Loading...</div>
+    <div class="festival" id="festival">
+      Checking...
+      <small id="festivalInfo"></small>
+    </div>
+  </section>
+
+</main>
+
+<section class="assistant">
+  <div class="section-label">// YOUR AI ASSISTANT</div>
+
+  <h1>How can I help you?</h1>
+
+  <div class="tamil">
+    தமிழில் கேளுங்கள். உங்கள் கேள்வியை
+    அனுப்புங்கள்; பதில் இங்கே தோன்றும்.
+  </div>
+
+  <div class="response" id="response">
+    Hello! I am VISION AI. How can I help you?
+  </div>
+
+  <div class="mic-area">
+    <button class="mic" id="mic" aria-label="Start voice input">
+      🎙
+    </button>
+    <div class="hint" id="hint">TAP TO SPEAK</div>
+  </div>
+
+  <div class="input-row">
+    <input id="question" type="text"
+      placeholder="Type your question...">
+    <button class="send" id="send">SEND</button>
+  </div>
+</section>
+
+</div>
+
 <script>
-const API="https://vision-ai-backend.agamudaiyadevan.workers.dev/";let previousResponseId=null,recognition=null,voices=[];const $=id=>document.getElementById(id),chat=$("chat"),stage=$("stage"),orb=$("orbwrap"),status=$("status"),input=$("prompt"),mic=$("mic");
-function state(s,label){orb.classList.remove("listening","thinking","speaking");if(s)orb.classList.add(s);status.textContent="● "+label}
-function add(t,c){$("welcome").style.display="none";let d=document.createElement("div");d.className="msg "+c;d.textContent=t;chat.appendChild(d);stage.scrollTo({top:stage.scrollHeight,behavior:"smooth"});return d}
-function getVoices(){voices=speechSynthesis.getVoices()}if("speechSynthesis"in window){getVoices();speechSynthesis.onvoiceschanged=getVoices}
-function say(t){if(!("speechSynthesis"in window)){state("","Ready to help");return}speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang="ta-IN";let v=voices.find(x=>/^ta([-_]|$)/i.test(x.lang));if(v)u.voice=v;u.rate=.96;u.pitch=1.04;u.onstart=()=>state("speaking","Speaking");u.onend=()=>state("","Ready to help");u.onerror=()=>state("","Ready to help");speechSynthesis.speak(u)}
-async function send(t){t=t.trim();if(!t)return;add(t,"user");input.value="";state("thinking","Thinking");let box=add("பதில் தயாராகிறது...","ai");try{let r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:t,previous_response_id:previousResponseId})});let d=await r.json();if(!r.ok)throw Error(d.error||"AI சேவையில் பிழை");box.textContent=d.reply||"பதில் கிடைக்கவில்லை";previousResponseId=d.response_id||previousResponseId;stage.scrollTo({top:stage.scrollHeight,behavior:"smooth"});say(box.textContent)}catch(e){box.textContent="மன்னிக்கவும். பதில் பெற முடியவில்லை.\n"+e.message;state("","Connection issue")}}
-$("form").addEventListener("submit",e=>{e.preventDefault();send(input.value)});
-mic.addEventListener("click",()=>{let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){add("இந்த Chrome பதிப்பில் குரல் உள்ளீடு கிடைக்கவில்லை. தட்டச்சு செய்து கேட்கலாம்.","ai");return}if(recognition){try{recognition.stop()}catch(e){}recognition=null;return}recognition=new SR();recognition.lang="ta-IN";recognition.interimResults=false;recognition.onstart=()=>{mic.classList.add("active");state("listening","Listening")};recognition.onresult=e=>{let t=e.results[0][0].transcript;input.value=t;send(t)};recognition.onerror=()=>state("","Voice input unavailable");recognition.onend=()=>{mic.classList.remove("active");recognition=null;if(!orb.classList.contains("thinking")&&!orb.classList.contains("speaking"))state("","Ready to help")};try{recognition.start()}catch(e){state("","Ready to help")}});
-</script></body></html>
+"use strict";
+
+/* TIME AND DATE */
+
+const clock = document.getElementById("clock");
+const dateElement = document.getElementById("date");
+const dayElement = document.getElementById("day");
+
+const timezone = "Asia/Kolkata";
+
+function updateClock() {
+  const now = new Date();
+
+  clock.textContent = new Intl.DateTimeFormat("en-IN", {
+    timeZone: timezone,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  }).format(now);
+
+  dateElement.textContent =
+    new Intl.DateTimeFormat("en-IN", {
+      timeZone: timezone,
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    }).format(now);
+
+  dayElement.textContent =
+    new Intl.DateTimeFormat("en-IN", {
+      timeZone: timezone,
+      weekday: "long"
+    }).format(now);
+
+  updateFestival(now);
+}
+
+/* 2026 FESTIVAL CALENDAR - INDIA */
+
+const festivals2026 = {
+  "2026-11-08": ["Deepavali", "Festival of Lights"],
+  "2026-11-15": ["Soora Samharam", "Skanda Sashti"],
+  "2026-11-24": ["Karthigai Deepam", "Festival of Lights"]
+};
+
+function updateFestival(now) {
+  const key = new Intl.DateTimeFormat("en-CA", {
+    timeZone: timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(now);
+
+  const festival = festivals2026[key];
+
+  document.getElementById("festival").childNodes[0].textContent =
+    festival ? festival[0] : "No Festival";
+
+  document.getElementById("festivalInfo").textContent =
+    festival ? festival[1] : "Have a wonderful day!";
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+
+/* AI BACKEND */
+
+const API_URL =
+  "https://vision-ai-backend.agamudaiyadevan.workers.dev/";
+
+const responseBox = document.getElementById("response");
+const questionInput = document.getElementById("question");
+const sendButton = document.getElementById("send");
+
+async function askAI(message) {
+  if (!message.trim()) return;
+
+  responseBox.textContent = "VISION AI is thinking...";
+  sendButton.disabled = true;
+
+  try {
+    const result = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: message
+      })
+    });
+
+    if (!result.ok) {
+      throw new Error("Backend error: " + result.status);
+    }
+
+    const data = await result.json();
+
+    if (!data.reply) {
+      throw new Error("No reply received");
+    }
+
+    responseBox.textContent = data.reply;
+
+    if ("speechSynthesis" in window) {
+      const speech = new SpeechSynthesisUtterance(data.reply);
+      speech.lang = "ta-IN";
+      speechSynthesis.cancel();
+      speechSynthesis.speak(speech);
+    }
+
+  } catch (error) {
+    responseBox.textContent =
+      "Connection error. Please check your backend connection.";
+    console.error(error);
+  } finally {
+    sendButton.disabled = false;
+  }
+}
+
+sendButton.addEventListener("click", () => {
+  askAI(questionInput.value);
+});
+
+questionInput.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    askAI(questionInput.value);
+  }
+});
+
+
+/* VOICE INPUT */
+
+const micButton = document.getElementById("mic");
+const hint = document.getElementById("hint");
+
+const SpeechRecognition =
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "ta-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  micButton.addEventListener("click", () => {
+    try {
+      recognition.start();
+    } catch (error) {
+      hint.textContent = "PLEASE TRY AGAIN";
+    }
+  });
+
+  recognition.onstart = () => {
+    micButton.classList.add("listening");
+    hint.textContent = "LISTENING...";
+  };
+
+  recognition.onresult = event => {
+    const spokenText =
+      event.results[0][0].transcript;
+
+    questionInput.value = spokenText;
+    askAI(spokenText);
+  };
+
+  recognition.onerror = () => {
+    hint.textContent = "VOICE INPUT ERROR";
+  };
+
+  recognition.onend = () => {
+    micButton.classList.remove("listening");
+    hint.textContent = "TAP TO SPEAK";
+  };
+
+} else {
+  micButton.disabled = true;
+  hint.textContent = "VOICE INPUT NOT SUPPORTED";
+}
+</script>
+
+</body>
+</html>
